@@ -9,6 +9,12 @@ const divide = (a, b) => a / b;
 
 let result;
 
+// CLEAR DISPLAY
+const numBtns = document.querySelectorAll('.num-btn');
+function clearDisplay() {
+  displayText.innerText = '';
+}
+
 // BUTTON AND DISPLAY EVENTS
 calcButtons.forEach(button => {
   button.addEventListener('click', function(e) {
@@ -17,10 +23,10 @@ calcButtons.forEach(button => {
     } else {
       displayText.innerText = 'SUPERERROR';
     }
-
+    
     let displayString = displayText.innerText;
     let pressedSymbols;
-
+    
     if (displayString.includes('/')) {
       pressedSymbols = displayString.split('/');
       result = divide(pressedSymbols[0],pressedSymbols[1]);
@@ -34,7 +40,7 @@ calcButtons.forEach(button => {
       pressedSymbols = displayString.split('+');
       result = add(+pressedSymbols[0],+pressedSymbols[1]);
     }
-
+    
     return result;
   })
 })
@@ -42,11 +48,11 @@ calcButtons.forEach(button => {
 // RESULT =
 const resultButton = document.querySelector('#result');
 resultButton.addEventListener('click', function() {
-  displayText.innerText = result.toFixed(3);
+  displayText.innerText = result.toFixed(1);
 })
 
 // CLEAR PREVIOUS
 const clearbutton = document.querySelector('#reset');
 clearbutton.addEventListener('click', function() {
   displayText.innerText = '';
-})
+});
